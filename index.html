@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BUILDOG | The Builder Was In The Room</title>
+  <meta name="description" content="BUILDOG is the Arc Chain memecoin born when the builder walked into the room. Name BUILDOG. Symbol BUILDOG." />
+  <meta name="theme-color" content="#020712" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <meta property="og:title" content="BUILDOG on Arc" />
+  <meta property="og:description" content="The builder was in the room. Official Arc Chain memecoin." />
+  <meta property="og:image" content="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Michroma&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="void" aria-hidden="true">
+    <canvas id="field"></canvas>
+    <div class="aurora"></div>
+    <div class="grid-floor"></div>
+    <div class="scanline"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+  </div>
+
+  <header class="nav" id="nav">
+    <a class="nav-brand" href="#hero">
+      <span class="nav-mark">
+        <img src="assets/logo.png" alt="BUILDOG logo" />
+      </span>
+      <span class="nav-word">BUILDOG</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#howtobuy">How to Buy</a>
+      <a href="#chart">Chart</a>
+      <a href="#joinus">Join Us</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="icon-btn" href="https://x.com/ArcBuildog" target="_blank" rel="noopener noreferrer" aria-label="BUILDOG on X">
+        <img src="assets/icons/x.svg" alt="" />
+      </a>
+      <a class="buy-btn" href="https://app.uniswap.org/swap?chain=arc&outputCurrency=0x4cb8382b9dAF7992d3b27D32f7dB650C57881DaA" target="_blank" rel="noopener noreferrer">
+        <img src="assets/icons/uniswap.svg" alt="" />
+        <span>Buy BUILDOG</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="hero">
+      <svg class="hero-arch" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+        <defs>
+          <linearGradient id="archStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#1a6dff" stop-opacity="0" />
+            <stop offset="20%" stop-color="#4db8ff" />
+            <stop offset="50%" stop-color="#e8f6ff" />
+            <stop offset="80%" stop-color="#4db8ff" />
+            <stop offset="100%" stop-color="#1a6dff" stop-opacity="0" />
+          </linearGradient>
+          <filter id="archGlow">
+            <feGaussianBlur stdDeviation="6" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <path class="arch-beam" d="M80 500 C 80 140, 1120 140, 1120 500" fill="none" stroke="url(#archStroke)" stroke-width="10" filter="url(#archGlow)" />
+        <path class="arch-hairline" d="M140 500 C 140 200, 1060 200, 1060 500" fill="none" stroke="rgba(122,212,255,0.28)" stroke-width="1.5" />
+      </svg>
+
+      <div class="orbit-field" aria-hidden="true">
+        <span class="cube c1"></span>
+        <span class="cube c2"></span>
+        <span class="cube c3"></span>
+        <span class="cube c4"></span>
+        <span class="cube c5"></span>
+        <span class="cube c6"></span>
+      </div>
+
+      <div class="hero-stage">
+        <div class="pedestal">
+          <div class="rings">
+            <i></i><i></i><i></i>
+          </div>
+          <div class="hero-portrait">
+            <img src="assets/logo.png" alt="BUILDOG, the cream Pomeranian in the Arc cap" />
+          </div>
+        </div>
+
+        <div class="hero-copy">
+          <p class="kicker">Arc Chain Memecoin</p>
+          <h1>
+            <span class="chrome">BUILDOG</span>
+          </h1>
+          <p class="symbol-row">
+            <span>Name</span>
+            <strong>BUILDOG</strong>
+            <span class="dot"></span>
+            <span>Symbol</span>
+            <strong>BUILDOG</strong>
+          </p>
+          <p class="tagline">The builder was in the room</p>
+          <p class="lede">
+            A living mascot walked into the Arc hackathon and left with the chain on its cap.
+            The Economic OS needed a goodest builder. The ticker followed.
+          </p>
+
+          <div class="ca-bar">
+            <span class="ca-label">Contract</span>
+            <code id="caText">0x4cb8382b9dAF7992d3b27D32f7dB650C57881DaA</code>
+            <button type="button" id="copyCa" class="copy-btn">Copy</button>
+          </div>
+
+          <div class="hero-links">
+            <a class="glass-link" href="https://app.uniswap.org/swap?chain=arc&outputCurrency=0x4cb8382b9dAF7992d3b27D32f7dB650C57881DaA" target="_blank" rel="noopener noreferrer">
+              <img src="assets/icons/uniswap.svg" alt="" />
+              Uniswap
+            </a>
+            <a class="glass-link" href="https://dexscreener.com/arc/0x01be77f0a364bddafd34521892ea4745ebf9b5a2" target="_blank" rel="noopener noreferrer">
+              <img src="assets/icons/dexscreener.svg" alt="" />
+              Dexscreener
+            </a>
+            <a class="glass-link" href="https://x.com/ArcBuildog" target="_blank" rel="noopener noreferrer">
+              <img src="assets/icons/x.svg" alt="" />
+              X
+            </a>
+            <a class="glass-link" href="https://explorer.arc.io/token/0x4cb8382b9dAF7992d3b27D32f7dB650C57881DaA" target="_blank" rel="noopener noreferrer">
+              <img src="assets/icons/blockscout.svg" alt="" />
+              Explorer
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a class="scroll-hint" href="#about">
+        <span>Enter the room</span>
+        <b></b>
+      </a>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="section-head">
+        <p class="kicker">The Record</p>
+        <h2>About BUILDOG</h2>
+        <p class="section-lead">
+          Official Arc posted from the hackathon floor. The dog in the cap was not a render.
+          The builder was standing in the room.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <figure class="photo-card reveal">
+          <div class="photo-frame">
+            <img src="assets/room.png" alt="BUILDOG in the Arc cap being held in the hackathon room" />
+          </div>
+          <figcaption>
+            <span class="cap-dot"></span>
+            Documented on site. Cream coat. Orange collar. Arc mark on the cap.
+          </figcaption>
+        </figure>
+
+        <article class="narrative-card reveal">
+          <p class="kicker">Main Narrative</p>
+          <h3>From the official Arc desk</h3>
+          <p>
+            Arc and Google DeepMind ran a nanopayments hackathon on the Economic OS.
+            Two hundred twenty seven builds landed. Agents paid agents. APIs settled in
+            fractions of a dollar. And in the middle of that room sat a Pomeranian wearing
+            the chain.
+          </p>
+          <p>
+            BUILDOG is the ticker that followed. No manifesto beyond the photo and the post.
+            If the builder can sit through a hackathon, the pack can sit through a candle.
+          </p>
+          <div class="tweet-shell">
+            <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-conversation="none">
+              <a href="https://twitter.com/arc/status/2050290447143350457"></a>
+            </blockquote>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section howtobuy" id="howtobuy">
+      <div class="section-head">
+        <p class="kicker">Acquisition Path</p>
+        <h2>How to Buy</h2>
+        <p class="section-lead">Four stations from a funded wallet to a confirmed Arc pair.</p>
+      </div>
+
+      <div class="rail" aria-hidden="true"></div>
+
+      <ol class="stations">
+        <li class="station reveal">
+          <span class="idx">01</span>
+          <h3>Open a wallet on Arc</h3>
+          <p>Connect a wallet that supports Arc mainnet. Confirm you are on chain 5042 before signing anything.</p>
+        </li>
+        <li class="station reveal">
+          <span class="idx">02</span>
+          <h3>Fund with USDC</h3>
+          <p>Arc settles in native USDC. Bridge or deposit enough to cover the swap and a thin buffer for the pool.</p>
+        </li>
+        <li class="station reveal">
+          <span class="idx">03</span>
+          <h3>Swap on Uniswap</h3>
+          <p>Open the official Uniswap interface, select Arc, paste the BUILDOG contract, and review the route before confirm.</p>
+          <a class="mini-link" href="https://app.uniswap.org/swap?chain=arc&outputCurrency=0x4cb8382b9dAF7992d3b27D32f7dB650C57881DaA" target="_blank" rel="noopener noreferrer">
+            <img src="assets/icons/uniswap.svg" alt="" />
+            Open Uniswap
+          </a>
+        </li>
+        <li class="station reveal">
+          <span class="idx">04</span>
+          <h3>Read the Arc chart</h3>
+          <p>Verify the fill on the Dexscreener Arc pair. Liquidity, tape, and candles live on that page only.</p>
+          <a class="mini-link" href="https://dexscreener.com/arc/0x01be77f0a364bddafd34521892ea4745ebf9b5a2" target="_blank" rel="noopener noreferrer">
+            <img src="assets/icons/dexscreener.svg" alt="" />
+            Open Dexscreener
+          </a>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section chart" id="chart">
+      <div class="section-head">
+        <p class="kicker">Live Tape</p>
+        <h2>Chart</h2>
+        <p class="section-lead">Dexscreener embed for the BUILDOG / USDC pool on Arc Chain.</p>
+      </div>
+      <div class="chart-frame reveal">
+        <div class="frame-corners" aria-hidden="true"></div>
+        <iframe
+          title="BUILDOG Dexscreener chart on Arc"
+          src="https://dexscreener.com/arc/0x01be77f0a364bddafd34521892ea4745ebf9b5a2?embed=1&theme=dark&trades=0&info=0"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="chart-note">
+        Pair
+        <a href="https://dexscreener.com/arc/0x01be77f0a364bddafd34521892ea4745ebf9b5a2" target="_blank" rel="noopener noreferrer">dexscreener.com/arc</a>
+      </p>
+    </section>
+
+    <section class="section joinus" id="joinus">
+      <div class="section-head">
+        <p class="kicker">The Pack</p>
+        <h2>Join Us</h2>
+        <p class="section-lead">Stand under the same arch. Same cap. Same ticker.</p>
+      </div>
+
+      <div class="banner-wrap reveal">
+        <div class="banner-frame">
+          <img src="assets/banner.png" alt="BUILDOG banner with the Arc gateway and chrome wordmark" />
+        </div>
+      </div>
+
+      <div class="join-docks">
+        <a class="dock reveal" href="https://x.com/ArcBuildog" target="_blank" rel="noopener noreferrer">
+          <img src="assets/icons/x.svg" alt="" />
+          <span>Follow @ArcBuildog</span>
+        </a>
+        <a class="dock reveal" href="https://dexscreener.com/arc/0x01be77f0a364bddafd34521892ea4745ebf9b5a2" target="_blank" rel="noopener noreferrer">
+          <img src="assets/icons/dexscreener.svg" alt="" />
+          <span>Watch the Arc pair</span>
+        </a>
+        <a class="dock reveal" href="https://app.uniswap.org/swap?chain=arc&outputCurrency=0x4cb8382b9dAF7992d3b27D32f7dB650C57881DaA" target="_blank" rel="noopener noreferrer">
+          <img src="assets/icons/uniswap.svg" alt="" />
+          <span>Trade on Uniswap</span>
+        </a>
+        <a class="dock reveal" href="https://explorer.arc.io/token/0x4cb8382b9dAF7992d3b27D32f7dB650C57881DaA" target="_blank" rel="noopener noreferrer">
+          <img src="assets/icons/blockscout.svg" alt="" />
+          <span>Read the contract</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-brand">
+      <img src="assets/logo.png" alt="" />
+      <div>
+        <strong>BUILDOG</strong>
+        <span>Arc Chain</span>
+      </div>
+    </div>
+    <p>Community memecoin. Not affiliated with Circle or Arc Labs. Nothing on this page is financial advice.</p>
+  </footer>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
